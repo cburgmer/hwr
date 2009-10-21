@@ -15,6 +15,10 @@ Tools
 
 * tegaki-eval:     evaluate handwriting recognition models against test data.
 
+* tegaki-extractstrokes:
+                   extract handwriting data for single strokes to a character
+                   collection file.
+
 * tegaki-render:   convert character file to an image or video.
 
 * tegaki-stats:    show various statistics about a character collection.

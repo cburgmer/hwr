@@ -1,14 +1,15 @@
 all=tegaki-zinnia-japanese tegaki-zinnia-japanese-light \
 tegaki-zinnia-japanese-joyo tegaki-zinnia-japanese-kyoiku \
 tegaki-zinnia-simplified-chinese tegaki-zinnia-simplified-chinese-light \
-tegaki-zinnia-traditional-chinese tegaki-zinnia-traditional-chinese-light
+tegaki-zinnia-traditional-chinese tegaki-zinnia-traditional-chinese-light \
+tegaki-wagomu-strokes
 
 alldist=tegaki-zinnia-japanese-dist tegaki-zinnia-japanese-light-dist \
 tegaki-zinnia-japanese-joyo-dist tegaki-zinnia-japanese-kyoiku-dist \
 tegaki-zinnia-simplified-chinese-dist \
 tegaki-zinnia-simplified-chinese-light-dist \
 tegaki-zinnia-traditional-chinese-dist \
-tegaki-zinnia-traditional-chinese-light-dist
+tegaki-zinnia-traditional-chinese-light-dist tegaki-wagomu-strokes
 
 all: $(all)
 
@@ -21,6 +22,7 @@ tegaki-zinnia-simplified-chinese: build/tegaki-zinnia-simplified-chinese/handwri
 tegaki-zinnia-simplified-chinese-light: build/tegaki-zinnia-simplified-chinese-light/handwriting-zh_CN.model
 tegaki-zinnia-traditional-chinese: build/tegaki-zinnia-traditional-chinese/handwriting-zh_TW.model
 tegaki-zinnia-traditional-chinese-light: build/tegaki-zinnia-traditional-chinese-light/handwriting-zh_TW.model
+tegaki-wagomu-strokes: build/tegaki-wagomu-strokes/strokes.model
 
 # shortcuts
 tzj: tegaki-zinnia-japanese
@@ -31,6 +33,7 @@ tzsc: tegaki-zinnia-simplified-chinese
 tzscl: tegaki-zinnia-simplified-chinese-light
 tztc: tegaki-zinnia-traditional-chinese
 tztcl: tegaki-zinnia-traditional-chinese-light
+tws: tegaki-wagomu-strokes
 
 # build japanese
 build/tegaki-zinnia-japanese/handwriting-ja.model: data/train/japanese/handwriting-ja.xml
@@ -67,6 +70,11 @@ build/tegaki-zinnia-traditional-chinese/handwriting-zh_TW.xml \
 -t data/train/japanese/handwriting-ja.xml
 	make -C build/tegaki-zinnia-traditional-chinese
 
+build/tegaki-wagomu-strokes/strokes.model: data/train/strokes/strokes.xml
+	test -d build/tegaki-wagomu-strokes || make tegaki-wagomu-strokes-build
+	cp -u -p data/train/strokes/strokes.xml build/tegaki-wagomu-strokes/
+	make -C build/tegaki-wagomu-strokes
+
 # light models
 build/tegaki-zinnia-japanese-light/handwriting-ja.model: tegaki-zinnia-japanese
 	rm -rf build/tegaki-zinnia-japanese-light
@@ -87,7 +95,7 @@ build/tegaki-zinnia-traditional-chinese-light/handwriting-zh_TW.model: tegaki-zi
 build/tegaki-zinnia-traditional-chinese-light/handwriting-zh_TW.model
 
 # prepare build-directory
-tegaki-zinnia-japanese-build tegaki-zinnia-japanese-joyo-build tegaki-zinnia-japanese-kyoiku-build tegaki-zinnia-simplified-chinese-build tegaki-zinnia-traditional-chinese-build:
+tegaki-zinnia-japanese-build tegaki-zinnia-japanese-joyo-build tegaki-zinnia-japanese-kyoiku-build tegaki-zinnia-simplified-chinese-build tegaki-zinnia-traditional-chinese-build tegaki-wagomu-strokes-build:
 	model=$(subst -build,,$@); \
 	mkdir -p build/$$model; \
 	cp $$model/* build/$$model/; \
