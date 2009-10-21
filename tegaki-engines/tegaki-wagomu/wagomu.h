@@ -139,6 +139,8 @@ private:
 
     CharDist *distm;
 
+    bool has_duplicates;
+
     unsigned int window_size;
 
     unsigned int get_max_n_vectors();

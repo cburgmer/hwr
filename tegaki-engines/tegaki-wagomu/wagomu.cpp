@@ -150,10 +150,22 @@ void Recognizer::set_window_size(unsigned int size) {
     window_size = size;
 }
 
+static int char_dist_cmp(CharDist *a, CharDist *b) {
+    if (a->dist < b->dist) return -1;
+    if (a->dist > b->dist) return 1;
+    return  0;
+}
+
+static int char_unicode_cmp(CharDist *a, CharDist *b) {
+    if (a->unicode < b->unicode) return -1;
+    if (a->unicode > b->unicode) return 1;
+    return  0;
+}
+
 bool Recognizer::open(char *path) {
     unsigned int *header;
     char *cursor;
-    unsigned int max_n_vectors;
+    unsigned int max_n_vectors, i;
 
     file = g_mapped_file_new(path, FALSE, NULL);
 
@@ -190,6 +202,23 @@ bool Recognizer::open(char *path) {
     strokedata = (float *)(data + groups[0].offset);
 
     distm = (CharDist *) malloc(n_characters * sizeof(CharDist));
+
+    /* check for duplicate characters, use distm as temporary container */
+    has_duplicates = false;
+    for (i=0; i < n_characters; i++) {
+        distm[i].unicode = characters[i].unicode;
+    }
+    /* sort the results with glibc's quicksort */
+    qsort ((void *) distm,
+           (size_t) n_characters,
+           sizeof (CharDist),
+           (int (*) (const void *, const void*)) char_unicode_cmp);
+    for (i=1; i < n_characters; i++) {
+        if (distm[i-1].unicode == distm[i].unicode) {
+            has_duplicates = true;
+            break;
+        }
+    }
 
     max_n_vectors = get_max_n_vectors();
 
@@ -439,13 +468,6 @@ inline wg_v4sf Recognizer::dtw4(float *s, unsigned int n,
 }
 #endif
 
-static int char_dist_cmp(CharDist *a, CharDist *b) {
-    if (a->dist < b->dist) return -1;
-    if (a->dist > b->dist) return 1;
-    return  0;
-}
-
-
 #if 0
 static void assert_aligned16(char *p) {
     if ((((uintptr_t)(p)) % 16) != 0)
@@ -540,6 +562,37 @@ Results *Recognizer::recognize(Character *ch, unsigned int n_results) {
             n_chars++;
         }
 
+    }
+
+    /* remove duplicate characters */
+    if (has_duplicates and n_chars > 1) {
+        qsort ((void *) distm,
+            (size_t) n_chars,
+            sizeof (CharDist),
+            (int (*) (const void *, const void*)) char_unicode_cmp);
+        /* first pass: mark duplicate characters and keep w/ min distance */
+        for (i=1; i < n_chars; i++) {
+            if (distm[i-1].unicode == distm[i].unicode) {
+                /* always shift the minium one to the right */
+                if (distm[i-1].dist < distm[i].dist)
+                    distm[i].dist = distm[i-1].dist;
+            }
+        }
+        /* second pass: inplace removal */
+        unsigned int current_pos = 0;
+        for (i=1; i < n_chars; i++) {
+            if (distm[i].unicode == distm[i-1].unicode)
+                /* double characters, the latter one has smaller distance */
+                continue;
+            else {
+                /* store last character */
+                distm[current_pos] = distm[i-1];
+                current_pos++;
+            }
+        }
+        distm[current_pos] = distm[n_chars-1];
+        current_pos++;
+        n_chars = current_pos;
     }
 
     /* sort the results with glibc's quicksort */
