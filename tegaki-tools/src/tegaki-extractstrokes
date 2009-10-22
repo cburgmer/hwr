@@ -164,7 +164,7 @@ class TegakiExtractStrokes(object):
 
             return self._get_writings(stroke_order, writing)
         except NoInformationError:
-                return []
+            return []
 
     def _get_writings(self, strokeOrder, sourceWriting):
         """
@@ -228,7 +228,7 @@ parser.add_option("-m", "--max-samples",
 parser.add_option("-l", "--locale",
                   type="string", dest="locale",
                   default='T',
-                  help="Character locale of target characters")
+                  help="Character locale of source characters")
 parser.add_option("-q", "--quiet", dest="quiet",
                   action="store_true",
                   help="Don't print any statistics")

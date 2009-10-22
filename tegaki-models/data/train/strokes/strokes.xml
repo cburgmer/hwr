@@ -68,31 +68,9 @@
     <height>1000</height>
     <strokes>
       <stroke>
-        <point x="493" y="416" />
-        <point x="506" y="583" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇚</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
         <point x="548" y="178" />
         <point x="548" y="785" />
         <point x="451" y="822" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇚</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
-        <point x="478" y="406" />
-        <point x="522" y="593" />
       </stroke>
     </strokes>
   </character>
@@ -138,17 +116,6 @@
     <height>1000</height>
     <strokes>
       <stroke>
-        <point x="521" y="215" />
-        <point x="478" y="785" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇚</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
         <point x="518" y="201" />
         <point x="538" y="598" />
         <point x="505" y="798" />
@@ -165,40 +132,6 @@
         <point x="508" y="181" />
         <point x="525" y="818" />
         <point x="475" y="791" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇚</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
-        <point x="503" y="93" />
-        <point x="497" y="907" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇚</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
-        <point x="482" y="290" />
-        <point x="532" y="453" />
-        <point x="468" y="710" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇚</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
-        <point x="500" y="296" />
-        <point x="500" y="703" />
       </stroke>
     </strokes>
   </character>
@@ -284,17 +217,6 @@
         <point x="563" y="627" />
         <point x="513" y="780" />
         <point x="437" y="743" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇚</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
-        <point x="500" y="338" />
-        <point x="500" y="662" />
       </stroke>
     </strokes>
   </character>
@@ -1010,31 +932,9 @@
     <height>1000</height>
     <strokes>
       <stroke>
-        <point x="495" y="370" />
-        <point x="505" y="629" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇚</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
         <point x="530" y="308" />
         <point x="513" y="691" />
         <point x="470" y="656" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇚</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
-        <point x="500" y="366" />
-        <point x="500" y="634" />
       </stroke>
     </strokes>
   </character>
@@ -2743,6 +2643,32 @@
       </stroke>
     </strokes>
   </character>
+  <character>
+    <utf8>㇒</utf8>
+    <width>1000</width>
+    <height>1000</height>
+    <strokes>
+      <stroke>
+        <point x="532" y="450" timestamp="512" />
+        <point x="532" y="453" timestamp="544" />
+        <point x="532" y="457" timestamp="552" />
+        <point x="528" y="463" timestamp="560" />
+        <point x="525" y="470" timestamp="568" />
+        <point x="522" y="477" timestamp="576" />
+        <point x="515" y="483" timestamp="584" />
+        <point x="508" y="490" timestamp="593" />
+        <point x="502" y="500" timestamp="600" />
+        <point x="495" y="507" timestamp="608" />
+        <point x="488" y="517" timestamp="617" />
+        <point x="485" y="527" timestamp="624" />
+        <point x="478" y="533" timestamp="633" />
+        <point x="475" y="543" timestamp="640" />
+        <point x="472" y="543" timestamp="649" />
+        <point x="468" y="547" timestamp="656" />
+        <point x="468" y="550" timestamp="664" />
+      </stroke>
+    </strokes>
+  </character>
 </set>
 <set name="㇏">
   <character>
@@ -3844,6 +3770,85 @@
       </stroke>
     </strokes>
   </character>
+  <character>
+    <utf8>㇏</utf8>
+    <width>1000</width>
+    <height>1000</height>
+    <strokes>
+      <stroke>
+        <point x="363" y="413" timestamp="1048" />
+        <point x="367" y="417" timestamp="1048" />
+        <point x="367" y="420" timestamp="1080" />
+        <point x="370" y="423" timestamp="1088" />
+        <point x="373" y="427" timestamp="1104" />
+        <point x="373" y="430" timestamp="1112" />
+        <point x="380" y="437" timestamp="1120" />
+        <point x="383" y="440" timestamp="1128" />
+        <point x="387" y="443" timestamp="1136" />
+        <point x="390" y="450" timestamp="1144" />
+        <point x="390" y="453" timestamp="1152" />
+        <point x="393" y="457" timestamp="1160" />
+        <point x="400" y="463" timestamp="1168" />
+        <point x="403" y="467" timestamp="1176" />
+        <point x="410" y="473" timestamp="1184" />
+        <point x="413" y="477" timestamp="1192" />
+        <point x="417" y="480" timestamp="1200" />
+        <point x="417" y="483" timestamp="1208" />
+        <point x="407" y="483" timestamp="1216" />
+        <point x="400" y="483" timestamp="1224" />
+        <point x="400" y="487" timestamp="1232" />
+        <point x="407" y="490" timestamp="1240" />
+        <point x="410" y="493" timestamp="1248" />
+        <point x="417" y="497" timestamp="1256" />
+        <point x="420" y="500" timestamp="1264" />
+        <point x="427" y="507" timestamp="1272" />
+        <point x="430" y="510" timestamp="1280" />
+        <point x="437" y="513" timestamp="1288" />
+        <point x="440" y="517" timestamp="1296" />
+        <point x="447" y="520" timestamp="1304" />
+        <point x="457" y="527" timestamp="1320" />
+        <point x="463" y="530" timestamp="1336" />
+        <point x="467" y="530" timestamp="1352" />
+        <point x="473" y="533" timestamp="1360" />
+        <point x="477" y="533" timestamp="1368" />
+        <point x="483" y="537" timestamp="1400" />
+        <point x="487" y="540" timestamp="1408" />
+        <point x="490" y="540" timestamp="1416" />
+        <point x="480" y="540" timestamp="1424" />
+        <point x="460" y="540" timestamp="1432" />
+        <point x="457" y="540" timestamp="1440" />
+        <point x="467" y="540" timestamp="1448" />
+        <point x="480" y="547" timestamp="1456" />
+        <point x="490" y="553" timestamp="1464" />
+        <point x="493" y="553" timestamp="1472" />
+        <point x="500" y="553" timestamp="1480" />
+        <point x="503" y="553" timestamp="1488" />
+        <point x="510" y="557" timestamp="1496" />
+        <point x="513" y="557" timestamp="1504" />
+        <point x="520" y="560" timestamp="1512" />
+        <point x="527" y="563" timestamp="1520" />
+        <point x="530" y="563" timestamp="1528" />
+        <point x="533" y="563" timestamp="1536" />
+        <point x="543" y="567" timestamp="1544" />
+        <point x="550" y="570" timestamp="1552" />
+        <point x="553" y="570" timestamp="1560" />
+        <point x="560" y="570" timestamp="1568" />
+        <point x="567" y="570" timestamp="1576" />
+        <point x="573" y="573" timestamp="1584" />
+        <point x="577" y="573" timestamp="1592" />
+        <point x="580" y="573" timestamp="1600" />
+        <point x="587" y="577" timestamp="1608" />
+        <point x="593" y="577" timestamp="1616" />
+        <point x="600" y="580" timestamp="1624" />
+        <point x="607" y="580" timestamp="1632" />
+        <point x="613" y="583" timestamp="1640" />
+        <point x="620" y="583" timestamp="1648" />
+        <point x="627" y="583" timestamp="1656" />
+        <point x="630" y="583" timestamp="1664" />
+        <point x="637" y="587" timestamp="1680" />
+      </stroke>
+    </strokes>
+  </character>
 </set>
 <set name="㇐">
   <character>
@@ -4790,6 +4795,68 @@
       <stroke>
         <point x="408" y="506" />
         <point x="591" y="493" />
+      </stroke>
+    </strokes>
+  </character>
+  <character>
+    <utf8>㇐</utf8>
+    <width>1000</width>
+    <height>1000</height>
+    <strokes>
+      <stroke>
+        <point x="183" y="500" timestamp="0" />
+        <point x="187" y="500" timestamp="96" />
+        <point x="190" y="500" timestamp="112" />
+        <point x="193" y="500" timestamp="120" />
+        <point x="200" y="500" timestamp="128" />
+        <point x="210" y="500" timestamp="136" />
+        <point x="223" y="500" timestamp="144" />
+        <point x="237" y="500" timestamp="152" />
+        <point x="250" y="500" timestamp="160" />
+        <point x="273" y="500" timestamp="168" />
+        <point x="297" y="500" timestamp="176" />
+        <point x="347" y="500" timestamp="196" />
+        <point x="373" y="500" timestamp="200" />
+        <point x="393" y="500" timestamp="208" />
+        <point x="403" y="500" timestamp="216" />
+        <point x="410" y="500" timestamp="224" />
+        <point x="413" y="500" timestamp="232" />
+        <point x="417" y="500" timestamp="240" />
+        <point x="420" y="500" timestamp="256" />
+        <point x="423" y="500" timestamp="304" />
+        <point x="430" y="500" timestamp="312" />
+        <point x="437" y="500" timestamp="320" />
+        <point x="447" y="500" timestamp="328" />
+        <point x="457" y="500" timestamp="337" />
+        <point x="467" y="500" timestamp="344" />
+        <point x="477" y="500" timestamp="352" />
+        <point x="490" y="500" timestamp="360" />
+        <point x="500" y="500" timestamp="368" />
+        <point x="513" y="500" timestamp="376" />
+        <point x="530" y="500" timestamp="384" />
+        <point x="547" y="500" timestamp="392" />
+        <point x="567" y="500" timestamp="400" />
+        <point x="580" y="500" timestamp="408" />
+        <point x="597" y="500" timestamp="416" />
+        <point x="620" y="500" timestamp="424" />
+        <point x="637" y="500" timestamp="432" />
+        <point x="657" y="500" timestamp="440" />
+        <point x="673" y="500" timestamp="448" />
+        <point x="697" y="500" timestamp="456" />
+        <point x="717" y="500" timestamp="464" />
+        <point x="733" y="500" timestamp="472" />
+        <point x="753" y="500" timestamp="480" />
+        <point x="770" y="500" timestamp="488" />
+        <point x="780" y="500" timestamp="496" />
+        <point x="790" y="500" timestamp="504" />
+        <point x="793" y="500" timestamp="512" />
+        <point x="797" y="500" timestamp="520" />
+        <point x="800" y="500" timestamp="592" />
+        <point x="803" y="500" timestamp="624" />
+        <point x="807" y="500" timestamp="632" />
+        <point x="810" y="500" timestamp="640" />
+        <point x="813" y="500" timestamp="648" />
+        <point x="817" y="500" timestamp="656" />
       </stroke>
     </strokes>
   </character>
@@ -7844,6 +7911,56 @@
       </stroke>
     </strokes>
   </character>
+  <character>
+    <utf8>㇔</utf8>
+    <width>1000</width>
+    <height>1000</height>
+    <strokes>
+      <stroke>
+        <point x="470" y="461" timestamp="2280" />
+        <point x="477" y="465" timestamp="2312" />
+        <point x="480" y="468" timestamp="2320" />
+        <point x="483" y="478" timestamp="2328" />
+        <point x="487" y="491" timestamp="2336" />
+        <point x="493" y="501" timestamp="2344" />
+        <point x="497" y="508" timestamp="2352" />
+        <point x="503" y="515" timestamp="2360" />
+        <point x="507" y="521" timestamp="2368" />
+        <point x="513" y="525" timestamp="2376" />
+        <point x="517" y="528" timestamp="2384" />
+        <point x="520" y="531" timestamp="2392" />
+        <point x="523" y="535" timestamp="2400" />
+        <point x="520" y="535" timestamp="2416" />
+        <point x="530" y="538" timestamp="2424" />
+        <point x="527" y="538" timestamp="2440" />
+      </stroke>
+    </strokes>
+  </character>
+  <character>
+    <utf8>㇔</utf8>
+    <width>1000</width>
+    <height>1000</height>
+    <strokes>
+      <stroke>
+        <point x="463" y="420" timestamp="0" />
+        <point x="469" y="427" timestamp="8" />
+        <point x="469" y="430" timestamp="16" />
+        <point x="476" y="437" timestamp="24" />
+        <point x="479" y="454" timestamp="33" />
+        <point x="489" y="467" timestamp="40" />
+        <point x="499" y="484" timestamp="48" />
+        <point x="503" y="497" timestamp="56" />
+        <point x="516" y="514" timestamp="65" />
+        <point x="516" y="534" timestamp="72" />
+        <point x="526" y="547" timestamp="81" />
+        <point x="529" y="560" timestamp="88" />
+        <point x="533" y="567" timestamp="96" />
+        <point x="533" y="574" timestamp="104" />
+        <point x="536" y="577" timestamp="112" />
+        <point x="536" y="580" timestamp="120" />
+      </stroke>
+    </strokes>
+  </character>
 </set>
 <set name="㇆">
   <character>
@@ -7865,46 +7982,10 @@
     <height>1000</height>
     <strokes>
       <stroke>
-        <point x="365" y="358" />
-        <point x="635" y="341" />
-        <point x="578" y="658" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇆</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
         <point x="228" y="165" />
         <point x="772" y="178" />
         <point x="762" y="835" />
         <point x="698" y="805" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇆</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
-        <point x="375" y="398" />
-        <point x="605" y="371" />
-        <point x="625" y="628" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇆</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
-        <point x="300" y="290" />
-        <point x="700" y="256" />
-        <point x="680" y="743" />
       </stroke>
     </strokes>
   </character>
@@ -7931,42 +8012,6 @@
         <point x="670" y="188" />
         <point x="700" y="812" />
         <point x="620" y="812" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇆</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
-        <point x="281" y="400" />
-        <point x="718" y="350" />
-        <point x="674" y="650" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇆</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
-        <point x="278" y="300" />
-        <point x="721" y="300" />
-        <point x="695" y="700" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇆</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
-        <point x="372" y="396" />
-        <point x="628" y="390" />
-        <point x="628" y="610" />
       </stroke>
     </strokes>
   </character>
@@ -8015,71 +8060,11 @@
     <height>1000</height>
     <strokes>
       <stroke>
-        <point x="375" y="353" />
-        <point x="625" y="347" />
-        <point x="585" y="653" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇆</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
-        <point x="370" y="173" />
-        <point x="630" y="163" />
-        <point x="580" y="836" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇆</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
-        <point x="335" y="179" />
-        <point x="665" y="156" />
-        <point x="638" y="843" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇆</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
-        <point x="350" y="203" />
-        <point x="636" y="196" />
-        <point x="650" y="803" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇆</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
         <point x="225" y="235" />
         <point x="775" y="171" />
         <point x="725" y="771" />
         <point x="692" y="828" />
         <point x="625" y="788" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇆</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
-        <point x="223" y="163" />
-        <point x="777" y="150" />
-        <point x="747" y="849" />
       </stroke>
     </strokes>
   </character>
@@ -8102,34 +8087,10 @@
     <height>1000</height>
     <strokes>
       <stroke>
-        <point x="286" y="225" />
-        <point x="713" y="231" />
-        <point x="669" y="775" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇆</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
         <point x="240" y="218" />
         <point x="760" y="227" />
         <point x="743" y="778" />
         <point x="666" y="781" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇆</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
-        <point x="293" y="389" />
-        <point x="706" y="333" />
-        <point x="619" y="666" />
       </stroke>
     </strokes>
   </character>
@@ -8156,29 +8117,6 @@
         <point x="701" y="245" />
         <point x="721" y="755" />
         <point x="638" y="738" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇆</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
-        <point x="582" y="246" />
-        <point x="418" y="753" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇆</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
-        <point x="400" y="445" />
-        <point x="600" y="418" />
-        <point x="573" y="582" />
       </stroke>
     </strokes>
   </character>
@@ -9308,17 +9246,6 @@
     <height>1000</height>
     <strokes>
       <stroke>
-        <point x="493" y="340" />
-        <point x="506" y="660" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇓</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
         <point x="678" y="335" />
         <point x="321" y="665" />
       </stroke>
@@ -9915,17 +9842,6 @@
     <height>1000</height>
     <strokes>
       <stroke>
-        <point x="464" y="449" />
-        <point x="536" y="551" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇓</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
         <point x="590" y="341" />
         <point x="520" y="554" />
         <point x="410" y="658" />
@@ -10029,17 +9945,6 @@
         <point x="566" y="359" />
         <point x="544" y="516" />
         <point x="434" y="640" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇓</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
-        <point x="495" y="375" />
-        <point x="505" y="625" />
       </stroke>
     </strokes>
   </character>
@@ -10153,6 +10058,71 @@
         <point x="629" y="349" />
         <point x="504" y="533" />
         <point x="371" y="651" />
+      </stroke>
+    </strokes>
+  </character>
+  <character>
+    <utf8>㇓</utf8>
+    <width>1000</width>
+    <height>1000</height>
+    <strokes>
+      <stroke>
+        <point x="650" y="408" timestamp="0" />
+        <point x="650" y="411" timestamp="32" />
+        <point x="647" y="411" timestamp="40" />
+        <point x="647" y="414" timestamp="48" />
+        <point x="643" y="418" timestamp="56" />
+        <point x="640" y="421" timestamp="64" />
+        <point x="640" y="424" timestamp="72" />
+        <point x="637" y="428" timestamp="80" />
+        <point x="637" y="434" timestamp="88" />
+        <point x="633" y="438" timestamp="96" />
+        <point x="627" y="441" timestamp="104" />
+        <point x="623" y="444" timestamp="112" />
+        <point x="620" y="451" timestamp="120" />
+        <point x="613" y="454" timestamp="128" />
+        <point x="610" y="458" timestamp="136" />
+        <point x="607" y="461" timestamp="144" />
+        <point x="600" y="464" timestamp="152" />
+        <point x="597" y="471" timestamp="160" />
+        <point x="593" y="474" timestamp="168" />
+        <point x="583" y="478" timestamp="176" />
+        <point x="580" y="484" timestamp="184" />
+        <point x="573" y="488" timestamp="192" />
+        <point x="570" y="491" timestamp="200" />
+        <point x="563" y="494" timestamp="208" />
+        <point x="557" y="501" timestamp="216" />
+        <point x="550" y="504" timestamp="224" />
+        <point x="540" y="508" timestamp="232" />
+        <point x="530" y="511" timestamp="240" />
+        <point x="523" y="518" timestamp="248" />
+        <point x="513" y="518" timestamp="256" />
+        <point x="507" y="524" timestamp="264" />
+        <point x="497" y="524" timestamp="272" />
+        <point x="490" y="531" timestamp="280" />
+        <point x="483" y="538" timestamp="288" />
+        <point x="477" y="541" timestamp="296" />
+        <point x="470" y="544" timestamp="304" />
+        <point x="463" y="548" timestamp="312" />
+        <point x="453" y="551" timestamp="320" />
+        <point x="450" y="554" timestamp="328" />
+        <point x="443" y="558" timestamp="336" />
+        <point x="433" y="561" timestamp="344" />
+        <point x="427" y="564" timestamp="352" />
+        <point x="420" y="564" timestamp="360" />
+        <point x="417" y="568" timestamp="368" />
+        <point x="410" y="568" timestamp="376" />
+        <point x="407" y="571" timestamp="384" />
+        <point x="397" y="571" timestamp="392" />
+        <point x="393" y="574" timestamp="400" />
+        <point x="387" y="574" timestamp="408" />
+        <point x="380" y="578" timestamp="416" />
+        <point x="373" y="581" timestamp="424" />
+        <point x="367" y="584" timestamp="432" />
+        <point x="360" y="584" timestamp="440" />
+        <point x="357" y="588" timestamp="448" />
+        <point x="353" y="588" timestamp="456" />
+        <point x="350" y="591" timestamp="464" />
       </stroke>
     </strokes>
   </character>
@@ -10819,18 +10789,6 @@
     <height>1000</height>
     <strokes>
       <stroke>
-        <point x="346" y="368" />
-        <point x="376" y="631" />
-        <point x="653" y="554" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇟</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
         <point x="356" y="368" />
         <point x="386" y="631" />
         <point x="643" y="608" />
@@ -11090,18 +11048,6 @@
         <point x="593" y="636" />
         <point x="633" y="589" />
         <point x="646" y="486" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇟</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
-        <point x="436" y="391" />
-        <point x="426" y="609" />
-        <point x="574" y="530" />
       </stroke>
     </strokes>
   </character>
@@ -11554,18 +11500,6 @@
     <height>1000</height>
     <strokes>
       <stroke>
-        <point x="462" y="407" />
-        <point x="442" y="592" />
-        <point x="557" y="525" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇟</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
         <point x="387" y="361" />
         <point x="372" y="566" />
         <point x="445" y="638" />
@@ -11857,6 +11791,155 @@
         <point x="546" y="636" />
         <point x="616" y="608" />
         <point x="628" y="495" />
+      </stroke>
+    </strokes>
+  </character>
+  <character>
+    <utf8>㇟</utf8>
+    <width>1000</width>
+    <height>1000</height>
+    <strokes>
+      <stroke>
+        <point x="285" y="170" timestamp="0" />
+        <point x="285" y="173" timestamp="24" />
+        <point x="285" y="180" timestamp="56" />
+        <point x="289" y="187" timestamp="72" />
+        <point x="289" y="190" timestamp="80" />
+        <point x="289" y="197" timestamp="88" />
+        <point x="289" y="203" timestamp="96" />
+        <point x="289" y="210" timestamp="104" />
+        <point x="289" y="213" timestamp="112" />
+        <point x="289" y="223" timestamp="120" />
+        <point x="289" y="230" timestamp="128" />
+        <point x="289" y="237" timestamp="136" />
+        <point x="289" y="247" timestamp="144" />
+        <point x="289" y="253" timestamp="152" />
+        <point x="285" y="263" timestamp="160" />
+        <point x="285" y="270" timestamp="168" />
+        <point x="282" y="280" timestamp="176" />
+        <point x="282" y="287" timestamp="184" />
+        <point x="282" y="293" timestamp="192" />
+        <point x="279" y="303" timestamp="201" />
+        <point x="279" y="313" timestamp="208" />
+        <point x="279" y="323" timestamp="216" />
+        <point x="279" y="333" timestamp="225" />
+        <point x="279" y="347" timestamp="232" />
+        <point x="279" y="363" timestamp="240" />
+        <point x="279" y="380" timestamp="248" />
+        <point x="279" y="400" timestamp="256" />
+        <point x="279" y="417" timestamp="264" />
+        <point x="279" y="433" timestamp="272" />
+        <point x="279" y="453" timestamp="280" />
+        <point x="279" y="467" timestamp="288" />
+        <point x="272" y="483" timestamp="296" />
+        <point x="272" y="500" timestamp="304" />
+        <point x="272" y="520" timestamp="312" />
+        <point x="272" y="527" timestamp="320" />
+        <point x="272" y="540" timestamp="329" />
+        <point x="272" y="553" timestamp="336" />
+        <point x="272" y="567" timestamp="344" />
+        <point x="272" y="577" timestamp="352" />
+        <point x="272" y="587" timestamp="360" />
+        <point x="269" y="593" timestamp="368" />
+        <point x="269" y="607" timestamp="376" />
+        <point x="265" y="617" timestamp="384" />
+        <point x="265" y="623" timestamp="392" />
+        <point x="265" y="633" timestamp="400" />
+        <point x="265" y="643" timestamp="408" />
+        <point x="265" y="653" timestamp="416" />
+        <point x="265" y="660" timestamp="424" />
+        <point x="265" y="670" timestamp="432" />
+        <point x="265" y="677" timestamp="440" />
+        <point x="265" y="687" timestamp="448" />
+        <point x="265" y="693" timestamp="456" />
+        <point x="265" y="703" timestamp="464" />
+        <point x="265" y="710" timestamp="472" />
+        <point x="265" y="717" timestamp="480" />
+        <point x="265" y="727" timestamp="488" />
+        <point x="265" y="730" timestamp="496" />
+        <point x="265" y="740" timestamp="504" />
+        <point x="265" y="747" timestamp="512" />
+        <point x="265" y="753" timestamp="520" />
+        <point x="269" y="760" timestamp="528" />
+        <point x="272" y="767" timestamp="536" />
+        <point x="272" y="770" timestamp="544" />
+        <point x="275" y="773" timestamp="552" />
+        <point x="275" y="777" timestamp="560" />
+        <point x="279" y="780" timestamp="568" />
+        <point x="282" y="783" timestamp="584" />
+        <point x="285" y="787" timestamp="600" />
+        <point x="292" y="790" timestamp="616" />
+        <point x="295" y="793" timestamp="624" />
+        <point x="299" y="797" timestamp="632" />
+        <point x="305" y="800" timestamp="640" />
+        <point x="312" y="803" timestamp="656" />
+        <point x="319" y="803" timestamp="664" />
+        <point x="325" y="807" timestamp="672" />
+        <point x="329" y="807" timestamp="680" />
+        <point x="339" y="810" timestamp="688" />
+        <point x="345" y="813" timestamp="696" />
+        <point x="355" y="817" timestamp="704" />
+        <point x="362" y="817" timestamp="712" />
+        <point x="375" y="820" timestamp="720" />
+        <point x="385" y="820" timestamp="728" />
+        <point x="399" y="823" timestamp="736" />
+        <point x="405" y="823" timestamp="744" />
+        <point x="419" y="827" timestamp="752" />
+        <point x="429" y="827" timestamp="760" />
+        <point x="435" y="830" timestamp="768" />
+        <point x="445" y="830" timestamp="776" />
+        <point x="455" y="830" timestamp="784" />
+        <point x="469" y="830" timestamp="792" />
+        <point x="485" y="830" timestamp="800" />
+        <point x="509" y="830" timestamp="808" />
+        <point x="532" y="830" timestamp="816" />
+        <point x="552" y="830" timestamp="824" />
+        <point x="569" y="830" timestamp="832" />
+        <point x="589" y="830" timestamp="840" />
+        <point x="609" y="830" timestamp="848" />
+        <point x="619" y="830" timestamp="856" />
+        <point x="632" y="830" timestamp="864" />
+        <point x="635" y="830" timestamp="872" />
+        <point x="639" y="827" timestamp="880" />
+        <point x="642" y="827" timestamp="888" />
+        <point x="645" y="827" timestamp="896" />
+        <point x="649" y="827" timestamp="904" />
+        <point x="652" y="827" timestamp="912" />
+        <point x="659" y="827" timestamp="920" />
+        <point x="662" y="827" timestamp="928" />
+        <point x="669" y="827" timestamp="936" />
+        <point x="675" y="827" timestamp="944" />
+        <point x="682" y="827" timestamp="952" />
+        <point x="689" y="827" timestamp="960" />
+        <point x="695" y="827" timestamp="968" />
+        <point x="699" y="827" timestamp="976" />
+        <point x="702" y="827" timestamp="984" />
+        <point x="705" y="827" timestamp="992" />
+        <point x="709" y="827" timestamp="1001" />
+        <point x="712" y="827" timestamp="1008" />
+        <point x="712" y="823" timestamp="1016" />
+        <point x="719" y="823" timestamp="1024" />
+        <point x="722" y="823" timestamp="1040" />
+        <point x="722" y="820" timestamp="1048" />
+        <point x="725" y="820" timestamp="1056" />
+        <point x="729" y="820" timestamp="1072" />
+        <point x="732" y="817" timestamp="1088" />
+        <point x="732" y="813" timestamp="1096" />
+        <point x="735" y="810" timestamp="1112" />
+        <point x="735" y="807" timestamp="1120" />
+        <point x="735" y="803" timestamp="1128" />
+        <point x="735" y="797" timestamp="1136" />
+        <point x="735" y="793" timestamp="1144" />
+        <point x="735" y="787" timestamp="1152" />
+        <point x="735" y="783" timestamp="1160" />
+        <point x="735" y="777" timestamp="1168" />
+        <point x="732" y="770" timestamp="1176" />
+        <point x="732" y="767" timestamp="1184" />
+        <point x="725" y="760" timestamp="1192" />
+        <point x="725" y="757" timestamp="1200" />
+        <point x="722" y="753" timestamp="1208" />
+        <point x="715" y="747" timestamp="1224" />
+        <point x="715" y="743" timestamp="1240" />
       </stroke>
     </strokes>
   </character>
@@ -14443,6 +14526,145 @@
       </stroke>
     </strokes>
   </character>
+  <character>
+    <utf8>㇉</utf8>
+    <width>1000</width>
+    <height>1000</height>
+    <strokes>
+      <stroke>
+        <point x="431" y="228" timestamp="1248" />
+        <point x="431" y="231" timestamp="1304" />
+        <point x="428" y="235" timestamp="1312" />
+        <point x="428" y="241" timestamp="1320" />
+        <point x="425" y="248" timestamp="1328" />
+        <point x="425" y="255" timestamp="1336" />
+        <point x="421" y="258" timestamp="1344" />
+        <point x="421" y="265" timestamp="1352" />
+        <point x="415" y="271" timestamp="1361" />
+        <point x="415" y="275" timestamp="1368" />
+        <point x="411" y="285" timestamp="1376" />
+        <point x="408" y="291" timestamp="1384" />
+        <point x="408" y="298" timestamp="1392" />
+        <point x="405" y="301" timestamp="1400" />
+        <point x="401" y="308" timestamp="1408" />
+        <point x="401" y="315" timestamp="1416" />
+        <point x="401" y="321" timestamp="1424" />
+        <point x="398" y="328" timestamp="1432" />
+        <point x="398" y="335" timestamp="1440" />
+        <point x="395" y="341" timestamp="1448" />
+        <point x="391" y="345" timestamp="1456" />
+        <point x="388" y="351" timestamp="1464" />
+        <point x="388" y="358" timestamp="1472" />
+        <point x="385" y="361" timestamp="1480" />
+        <point x="385" y="365" timestamp="1488" />
+        <point x="381" y="368" timestamp="1496" />
+        <point x="381" y="375" timestamp="1504" />
+        <point x="378" y="378" timestamp="1512" />
+        <point x="378" y="381" timestamp="1520" />
+        <point x="375" y="385" timestamp="1528" />
+        <point x="371" y="388" timestamp="1536" />
+        <point x="368" y="388" timestamp="1544" />
+        <point x="368" y="391" timestamp="1552" />
+        <point x="365" y="395" timestamp="1560" />
+        <point x="365" y="398" timestamp="1568" />
+        <point x="361" y="405" timestamp="1576" />
+        <point x="361" y="408" timestamp="1584" />
+        <point x="358" y="411" timestamp="1592" />
+        <point x="358" y="415" timestamp="1601" />
+        <point x="358" y="421" timestamp="1608" />
+        <point x="355" y="421" timestamp="1616" />
+        <point x="355" y="425" timestamp="1624" />
+        <point x="351" y="428" timestamp="1632" />
+        <point x="351" y="431" timestamp="1640" />
+        <point x="351" y="438" timestamp="1648" />
+        <point x="348" y="438" timestamp="1656" />
+        <point x="348" y="445" timestamp="1664" />
+        <point x="345" y="445" timestamp="1680" />
+        <point x="345" y="448" timestamp="1688" />
+        <point x="348" y="448" timestamp="1792" />
+        <point x="351" y="448" timestamp="1808" />
+        <point x="355" y="448" timestamp="1816" />
+        <point x="365" y="448" timestamp="1824" />
+        <point x="371" y="451" timestamp="1832" />
+        <point x="385" y="451" timestamp="1840" />
+        <point x="401" y="455" timestamp="1848" />
+        <point x="418" y="455" timestamp="1856" />
+        <point x="441" y="455" timestamp="1864" />
+        <point x="465" y="455" timestamp="1872" />
+        <point x="491" y="455" timestamp="1880" />
+        <point x="515" y="455" timestamp="1888" />
+        <point x="538" y="455" timestamp="1896" />
+        <point x="558" y="455" timestamp="1904" />
+        <point x="578" y="455" timestamp="1912" />
+        <point x="598" y="455" timestamp="1920" />
+        <point x="608" y="455" timestamp="1928" />
+        <point x="618" y="455" timestamp="1936" />
+        <point x="625" y="455" timestamp="1944" />
+        <point x="635" y="455" timestamp="1952" />
+        <point x="638" y="455" timestamp="1960" />
+        <point x="648" y="455" timestamp="1968" />
+        <point x="651" y="455" timestamp="1976" />
+        <point x="655" y="455" timestamp="1984" />
+        <point x="655" y="458" timestamp="2088" />
+        <point x="655" y="461" timestamp="2104" />
+        <point x="655" y="471" timestamp="2112" />
+        <point x="655" y="478" timestamp="2120" />
+        <point x="655" y="485" timestamp="2128" />
+        <point x="655" y="491" timestamp="2136" />
+        <point x="655" y="498" timestamp="2144" />
+        <point x="651" y="508" timestamp="2152" />
+        <point x="651" y="518" timestamp="2160" />
+        <point x="651" y="528" timestamp="2168" />
+        <point x="651" y="538" timestamp="2176" />
+        <point x="648" y="548" timestamp="2184" />
+        <point x="648" y="561" timestamp="2192" />
+        <point x="645" y="568" timestamp="2200" />
+        <point x="641" y="578" timestamp="2208" />
+        <point x="641" y="588" timestamp="2216" />
+        <point x="641" y="598" timestamp="2224" />
+        <point x="638" y="605" timestamp="2232" />
+        <point x="638" y="615" timestamp="2240" />
+        <point x="635" y="625" timestamp="2248" />
+        <point x="635" y="635" timestamp="2256" />
+        <point x="635" y="641" timestamp="2264" />
+        <point x="635" y="651" timestamp="2272" />
+        <point x="635" y="661" timestamp="2280" />
+        <point x="631" y="665" timestamp="2288" />
+        <point x="631" y="675" timestamp="2296" />
+        <point x="631" y="681" timestamp="2304" />
+        <point x="631" y="688" timestamp="2312" />
+        <point x="631" y="698" timestamp="2320" />
+        <point x="631" y="705" timestamp="2328" />
+        <point x="631" y="711" timestamp="2336" />
+        <point x="631" y="721" timestamp="2344" />
+        <point x="631" y="728" timestamp="2352" />
+        <point x="631" y="735" timestamp="2360" />
+        <point x="631" y="745" timestamp="2368" />
+        <point x="631" y="751" timestamp="2376" />
+        <point x="631" y="755" timestamp="2384" />
+        <point x="628" y="758" timestamp="2392" />
+        <point x="628" y="761" timestamp="2400" />
+        <point x="628" y="768" timestamp="2408" />
+        <point x="625" y="768" timestamp="2416" />
+        <point x="625" y="771" timestamp="2432" />
+        <point x="621" y="771" timestamp="2448" />
+        <point x="618" y="771" timestamp="2480" />
+        <point x="611" y="771" timestamp="2504" />
+        <point x="605" y="771" timestamp="2512" />
+        <point x="595" y="768" timestamp="2520" />
+        <point x="588" y="765" timestamp="2528" />
+        <point x="575" y="761" timestamp="2536" />
+        <point x="565" y="755" timestamp="2544" />
+        <point x="555" y="751" timestamp="2552" />
+        <point x="535" y="741" timestamp="2560" />
+        <point x="521" y="738" timestamp="2568" />
+        <point x="505" y="728" timestamp="2576" />
+        <point x="501" y="721" timestamp="2584" />
+        <point x="498" y="721" timestamp="2592" />
+        <point x="498" y="718" timestamp="2608" />
+      </stroke>
+    </strokes>
+  </character>
 </set>
 <set name="㇄">
   <character>
@@ -14478,32 +14700,6 @@
         <point x="423" y="275" />
         <point x="396" y="725" />
         <point x="603" y="725" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇄</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
-        <point x="423" y="263" />
-        <point x="420" y="717" />
-        <point x="533" y="737" />
-        <point x="580" y="631" />
-      </stroke>
-    </strokes>
-  </character>
-  <character>
-    <utf8>㇄</utf8>
-    <width>1000</width>
-    <height>1000</height>
-    <strokes>
-      <stroke>
-        <point x="280" y="159" />
-        <point x="298" y="841" />
-        <point x="675" y="839" />
-        <point x="720" y="706" />
       </stroke>
     </strokes>
   </character>
