@@ -1,14 +1,17 @@
 all=tegaki-zinnia-japanese tegaki-zinnia-japanese-light \
 tegaki-zinnia-japanese-joyo tegaki-zinnia-japanese-kyoiku \
 tegaki-zinnia-simplified-chinese tegaki-zinnia-simplified-chinese-light \
-tegaki-zinnia-traditional-chinese tegaki-zinnia-traditional-chinese-light
+tegaki-zinnia-traditional-chinese tegaki-zinnia-traditional-chinese-light \
+tegaki-zinnia-traditional-cantonese tegaki-zinnia-traditional-cantonese-light
 
 alldist=tegaki-zinnia-japanese-dist tegaki-zinnia-japanese-light-dist \
 tegaki-zinnia-japanese-joyo-dist tegaki-zinnia-japanese-kyoiku-dist \
 tegaki-zinnia-simplified-chinese-dist \
 tegaki-zinnia-simplified-chinese-light-dist \
 tegaki-zinnia-traditional-chinese-dist \
-tegaki-zinnia-traditional-chinese-light-dist
+tegaki-zinnia-traditional-chinese-light-dist \
+tegaki-zinnia-traditional-cantonese-dist \
+tegaki-zinnia-traditional-cantonese-light-dist
 
 all: $(all)
 
@@ -21,6 +24,8 @@ tegaki-zinnia-simplified-chinese: build/tegaki-zinnia-simplified-chinese/handwri
 tegaki-zinnia-simplified-chinese-light: build/tegaki-zinnia-simplified-chinese-light/handwriting-zh_CN.model
 tegaki-zinnia-traditional-chinese: build/tegaki-zinnia-traditional-chinese/handwriting-zh_TW.model
 tegaki-zinnia-traditional-chinese-light: build/tegaki-zinnia-traditional-chinese-light/handwriting-zh_TW.model
+tegaki-zinnia-traditional-cantonese: build/tegaki-zinnia-traditional-cantonese/handwriting-zh_HK.model
+tegaki-zinnia-traditional-cantonese-light: build/tegaki-zinnia-traditional-cantonese-light/handwriting-zh_HK.model
 
 # shortcuts
 tzj: tegaki-zinnia-japanese
@@ -31,6 +36,8 @@ tzsc: tegaki-zinnia-simplified-chinese
 tzscl: tegaki-zinnia-simplified-chinese-light
 tztc: tegaki-zinnia-traditional-chinese
 tztcl: tegaki-zinnia-traditional-chinese-light
+tzty: tegaki-zinnia-traditional-cantonese
+tztyl: tegaki-zinnia-traditional-cantonese-light
 
 # build japanese
 build/tegaki-zinnia-japanese/handwriting-ja.model: data/train/japanese/handwriting-ja.xml
@@ -67,6 +74,18 @@ build/tegaki-zinnia-traditional-chinese/handwriting-zh_TW.xml \
 -t data/train/japanese/handwriting-ja.xml
 	make -C build/tegaki-zinnia-traditional-chinese
 
+# build traditional cantonese
+build/tegaki-zinnia-traditional-cantonese/handwriting-zh_HK.model: data/train/traditional-chinese/handwriting-zh_TW.xml data/train/traditional-chinese/out-domain data/train/simplified-chinese/handwriting-zh_CN.xml data/train/japanese/handwriting-ja.xml
+	test -d build/tegaki-zinnia-traditional-cantonese || make tegaki-zinnia-traditional-cantonese-build
+	tegaki-bootstrap -q --domain=BIG5HKSCS --locale=T --max-samples=1 \
+build/tegaki-zinnia-traditional-cantonese/handwriting-zh_HK.xml \
+-c data/train/traditional-cantonese/handwriting-zh_HK.xml \
+-c data/train/traditional-chinese/handwriting-zh_TW.xml \
+-d data/train/traditional-chinese/out-domain \
+-t data/train/simplified-chinese/handwriting-zh_CN.xml \
+-t data/train/japanese/handwriting-ja.xml
+	make -C build/tegaki-zinnia-traditional-cantonese
+
 # light models
 build/tegaki-zinnia-japanese-light/handwriting-ja.model: tegaki-zinnia-japanese
 	rm -rf build/tegaki-zinnia-japanese-light
@@ -86,8 +105,14 @@ build/tegaki-zinnia-traditional-chinese-light/handwriting-zh_TW.model: tegaki-zi
 	zinnia_convert -c 0.005 build/tegaki-zinnia-traditional-chinese-light/handwriting-zh_TW.model.txt \
 build/tegaki-zinnia-traditional-chinese-light/handwriting-zh_TW.model
 
+build/tegaki-zinnia-traditional-cantonese-light/handwriting-zh_HK.model: tegaki-zinnia-traditional-cantonese
+	rm -rf build/tegaki-zinnia-traditional-cantonese-light
+	cp -R -p build/tegaki-zinnia-traditional-cantonese build/tegaki-zinnia-traditional-cantonese-light
+	zinnia_convert -c 0.005 build/tegaki-zinnia-traditional-cantonese-light/handwriting-zh_HK.model.txt \
+build/tegaki-zinnia-traditional-cantonese-light/handwriting-zh_HK.model
+
 # prepare build-directory
-tegaki-zinnia-japanese-build tegaki-zinnia-japanese-joyo-build tegaki-zinnia-japanese-kyoiku-build tegaki-zinnia-simplified-chinese-build tegaki-zinnia-traditional-chinese-build:
+tegaki-zinnia-japanese-build tegaki-zinnia-japanese-joyo-build tegaki-zinnia-japanese-kyoiku-build tegaki-zinnia-simplified-chinese-build tegaki-zinnia-traditional-chinese-build tegaki-zinnia-traditional-cantonese-build:
 	model=$(subst -build,,$@); \
 	mkdir -p build/$$model; \
 	cp $$model/* build/$$model/; \
