@@ -20,6 +20,7 @@
 # - Mathieu Blondel
 
 import os
+import math
 from ConfigParser import SafeConfigParser, NoSectionError, NoOptionError
 
 import gtk
@@ -30,6 +31,7 @@ from canvas import Canvas
 from chartable import CharTable
 
 from tegaki.recognizer import Recognizer
+from tegaki.strokerecognizer import StrokeRecognizer
 
 class RecognizerWidgetBase(gtk.HBox):
 
@@ -580,6 +582,166 @@ class SmartRecognizerWidget(RecognizerWidgetBase):
     def find(self):
         if self._focused_canvas:
             self._find(self._focused_canvas)
+
+class StrokeRecognizerWidget(SimpleRecognizerWidget):
+    STROKES = u"㇐㇀㇑㇚㇒㇓㇔㇏㇝㇕㇇㇖㇗㇘㇄㇙㇜㇛㇢㇁㇂㇃㇅㇍㇊㇆㇈㇞㇟㇎㇋㇠㇌㇉㇡㇣"
+
+    def __init__(self):
+        self._stroke_recognizer = None
+        SimpleRecognizerWidget.__init__(self)
+
+    def _create_toolbar(self):
+        self._toolbar = gtk.VBox(spacing=2)
+        self._create_commit_button()
+        self._create_toolbar_separator()
+        self._create_find_button()
+        self._create_toolbar_separator()
+        self._create_undo_button()
+        self._create_clear_button()
+        self._create_toolbar_separator()
+        self._create_models_button()
+        self._create_prefs_button()
+
+    def _create_commit_button(self):
+        self._commit_button = gtk.Button()
+        image = gtk.image_new_from_stock(gtk.STOCK_OK, gtk.ICON_SIZE_BUTTON)
+        self._commit_button.set_image(image)
+        self._commit_button.connect("clicked", self._on_commit)
+        self._toolbar.pack_start(self._commit_button, expand=False)
+
+    def _on_commit(self, button):
+        chars = self.get_selected_characters()
+        if len(chars) > 0:
+            self.clear_all()
+            self.emit("commit-string", "".join(chars))
+
+    def set_selected_model(self, i):
+        SimpleRecognizerWidget.set_selected_model(self, i)
+        if self._ready:
+            self._stroke_recognizer = StrokeRecognizer(self._recognizer)
+
+    def find(self):
+        if not self._ready:
+            return
+
+        writing = self._canvas.get_writing().copy()
+
+        if writing.get_n_strokes() == 0:
+            return
+
+        selected = [char.selected for char in self._characters]
+        candidates_seen = [[(c, None) for c in candidates]
+            for candidates in self._characters]
+        stroke_candidates = self._stroke_recognizer.recognize(writing,
+            strokes=candidates_seen)
+        candidates_list = [[candidate for candidate, _ in stroke]
+            for stroke in stroke_candidates]
+
+        self._characters = []
+        for idx, candidates in enumerate(candidates_list):
+            candidate_list = CandidateList(candidates)
+            # reselect already selected ones
+            if idx < len(selected):
+                candidate_list.selected = selected[idx]
+            self._characters.append(candidate_list)
+
+        self._chartable.set_characters(self.get_selected_characters())
+
+    def clear_characters(self):
+        self._characters = []
+        self._chartable.clear()
+
+    def replace_character(self, index, candidate_list):
+        if len(candidate_list) > 0:
+            try:
+                self._characters[index] = candidate_list
+                self._chartable.set_characters(self.get_selected_characters())
+            except IndexError:
+                pass
+
+    def remove_character(self, index):
+        length = len(self._chartable.get_characters())
+        if length > 0 and index <= length - 1:
+            del self._characters[index]
+
+            writing = self._canvas.get_writing()
+            writing.remove_stroke(index)
+            self._canvas.refresh(force_draw=True)
+
+            self._chartable.set_characters(self.get_selected_characters())
+
+    def get_selected_characters(self):
+        return [char[char.selected] for char in self._characters]
+
+    def revert_stroke(self):
+        self.remove_character(len(self._characters) - 1)
+
+    def _on_character_selected(self, chartable, event):
+        selected = self._chartable.get_selected()
+
+        candidates = self._characters[selected]
+        popup = CandidatePopup(candidates)
+        popup.move(int(event.x_root), int(event.y_root) + \
+                    int(self._chartable.allocation.height/3))
+
+        popup.connect("character-selected", self._on_candidate_selected)
+        popup.connect("hide", self._on_popup_close)
+        popup.connect("edit-character", self._on_edit_character)
+        popup.connect("delete-character", self._on_delete_character)
+
+        popup.popup()
+
+    def _on_candidate_selected(self, popup, event):
+        char_selected = self._chartable.get_selected()
+        cand_selected = popup.get_selected()
+        self._characters[char_selected].selected = cand_selected
+        self._chartable.set_characters(self.get_selected_characters())
+        self._chartable.unselect()
+
+    def _on_edit_character(self, popup):
+        stroke_selected = self._chartable.get_selected()
+        edit_window = gtk.Window()
+        edit_window.set_title("Select stroke")
+
+        chartable = CharTable()
+        chartable.add_events(gdk.BUTTON_PRESS_MASK)
+        chartable.set_characters(self.STROKES)
+        chartable.set_layout(CharTable.LAYOUT_HORIZONTAL)
+        max_width, max_height = self._chartable.get_max_char_size()
+        width = 6
+        height = math.ceil(1.0 * len(self.STROKES) / width)
+        chartable.set_size_request(int(max_width*width),
+                                   int(max_height*height))
+        edit_window.add(chartable)
+
+        parent = self.get_toplevel()
+        if parent.flags() & gtk.TOPLEVEL:
+            edit_window.set_transient_for(parent)
+            edit_window.set_position(gtk.WIN_POS_CENTER_ON_PARENT)
+            edit_window.set_type_hint(gdk.WINDOW_TYPE_HINT_DIALOG)
+        edit_window.set_modal(True)
+
+        chartable.connect("character-selected", self._on_commit_edited_char,
+            stroke_selected)
+
+        edit_window.show_all()
+
+    def _on_commit_edited_char(self, chartable, event, stroke_selected):
+        stroke = self.STROKES[chartable.get_selected()]
+        # continue to keep old strokes, remove last one for const count
+        current_strokes = self._characters[stroke_selected][:-1]
+        candidate_list = CandidateList(current_strokes + [stroke])
+        candidate_list.set_selected(stroke)
+        self.replace_character(stroke_selected, candidate_list)
+        chartable.get_parent().destroy()
+
+    def _on_delete_character(self, popup):
+        stroke_selected = self._chartable.get_selected()
+        self.remove_character(stroke_selected)
+
+    def _on_popup_close(self, popup):
+        self._chartable.unselect()
+
 
 class CandidatePopup(gtk.Window):
 

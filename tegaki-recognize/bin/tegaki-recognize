@@ -26,7 +26,8 @@ from optparse import OptionParser
 import gtk
 from gtk import gdk
 
-from tegakigtk.recognizer import SmartRecognizerWidget, SimpleRecognizerWidget
+from tegakigtk.recognizer import (SmartRecognizerWidget, SimpleRecognizerWidget,
+    StrokeRecognizerWidget)
 
 VERSION = '0.2'
 
@@ -43,6 +44,7 @@ class TegakiRecognize(object):
         self._position = None
         self._hide = options.hide
         self._simple = options.simple
+        self._stroke = options.stroke
         self._dont_quit = options.dont_quit
         self._init_icon()
         self._create_window()
@@ -70,6 +72,8 @@ class TegakiRecognize(object):
         self._window.set_title("Tegaki")
         if self._simple:
             rw = SimpleRecognizerWidget()
+        elif self._stroke:
+            rw = StrokeRecognizerWidget()
         else:
             rw = SmartRecognizerWidget()
         self._window.add(rw)
@@ -137,6 +141,9 @@ parser.add_option("", "--hide",
 parser.add_option("-s", "--simple",
                   action="store_true", dest="simple", default=False,
                   help="use simple recognizer instead of the smart one")
+parser.add_option("--stroke",
+                  action="store_true", dest="stroke", default=False,
+                  help="use stroke recognizer instead of the smart one")
 parser.add_option("-d", "--dont-quit",
                   action="store_true", dest="dont_quit", default=False,
                   help="don't quit when main window is closed")
