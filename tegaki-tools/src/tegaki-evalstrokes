@@ -1,0 +1,332 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# Copyright (C) 2009 The Tegaki project contributors
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+# Contributors to this file:
+# - Mathieu Blondel
+# - Christoph Burgmer
+
+import sys
+import os
+import time
+from optparse import OptionParser
+
+from tegaki.character import CharacterCollection
+from tegaki.recognizer import Recognizer
+from tegaki.strokerecognizer import StrokeRecognizer, StrokeRecognizerError
+
+from tegakitools.tomoe import tomoe_dict_to_character_collection
+
+try:
+    from cjklib.characterlookup import CharacterLookup
+    from cjklib.exception import NoInformationError
+except ImportError:
+    print "Please install cjklib (http://code.google.com/p/cjklib)"
+    sys.exit(1)
+
+VERSION = '0.3'
+
+def harmonic_mean(x1, x2):
+    if x1 == 0.0 and x2 == 0.0:
+        return 0.0
+    else:
+        return 2 * float(x1 * x2) / float(x1 + x2)
+
+class TegakiEvalStrokesError(Exception):
+    pass
+
+class TegakiEvalStrokes(object):
+
+    MATCH_RESULTS = (1, 5, 10)
+
+    def __init__(self, options, args):
+        self._verbosity_level = options.verbosity_level
+        self._directories = options.directories
+        self._charcols = options.charcols
+        self._tomoe = options.tomoe
+        self._locale = options.locale
+
+        if len(args) != 2:
+            raise TegakiEvalStrokesError("Need a recognizer and a model")
+        self._recognizer = args[0]
+        self._model = args[1]
+
+        self._cjk = CharacterLookup(self._locale)
+
+    def run(self):
+        charcol = CharacterCollection()
+
+        # add the directories provided
+        for directory in self._directories:
+            charcol += CharacterCollection.from_character_directory(directory)
+
+        # add the character collections provided
+        for charcol_path in self._charcols:
+            _charcol = CharacterCollection()
+            gzip = False; bz2 = False
+            if charcol_path.endswith(".gz"): gzip = True
+            if charcol_path.endswith(".bz2"): bz2 = True
+            _charcol.read(charcol_path, gzip=gzip, bz2=bz2)
+            charcol += _charcol
+
+        # add tomoe dictionaries provided
+        for tomoe in self._tomoe:
+            charcol += tomoe_dict_to_character_collection(tomoe)
+
+        all_chars = charcol.get_all_characters()
+
+        if len(all_chars) == 0:
+            raise TegakiEvalError, "No character samples to evaluate!"
+
+        recognizer_class = self._get_recognizer_class()
+        recognizer = self._get_recognizer(recognizer_class)
+        stroke_recognizer = StrokeRecognizer(recognizer)
+
+        self._eval(stroke_recognizer, all_chars)
+
+    def _get_recognizer_class(self):
+        avail_recognizers = Recognizer.get_available_recognizers()
+
+        if not self._recognizer in avail_recognizers:
+            err = "Not an available recognizer!\n"
+            err += "Available ones include: %s" % \
+                ", ".join(avail_recognizers.keys())
+            raise TegakiEvalError, err
+
+        return avail_recognizers[self._recognizer]
+
+    def _get_recognizer(self, recognizer_class):
+        recognizer = recognizer_class()
+        if os.path.exists(self._model):
+            # the path exists so we consider the parameter to be a model path
+            method = recognizer.open
+
+            # try to find a .meta file
+            meta_file = self._model.replace(".model", ".meta")
+            if os.path.exists(meta_file) and meta_file.endswith(".meta"):
+                try:
+                    meta = Recognizer.read_meta_file(meta_file)
+                except RecognizerError, e:
+                    raise TegakiEvalError, str(e) 
+            else:
+                meta = {}
+        else:
+            # otherwise we consider the parameter to be a model name
+            avail_models = recognizer_class.get_available_models()
+            if not self._model in avail_models:
+                err = "Not an available model!\n"
+                err += "Available ones include: %s" % \
+                    ", ".join(["\"%s\"" % k for k in avail_models.keys()])
+                raise TegakiEvalError, err 
+
+            meta = avail_models[self._model]
+            method = recognizer.set_model
+        try:
+            method(self._model)
+            recognizer.set_options(meta)
+        except RecognizerError, e:
+            raise TegakiEvalStrokesError(e.args)
+
+        return recognizer
+
+    def _eval(self, recognizer, all_chars):
+        # number of samples present per character
+        n_samples = {}
+        # number of correctly predicted samples per character
+        n_corr_pred = {}
+        # number of times a character was predicted (correctly or not)
+        n_pred = {}
+
+        for n in self.MATCH_RESULTS:
+            n_corr_pred[n] = {}
+            n_pred[n] = {}
+
+        # calculate our statistics for each character
+
+        canddict = {} # store ALL the candidate results for verbosity >= 2
+
+        start_time = time.time()
+
+        n_skipped_char = 0
+        n_eval_strokes = 0
+
+        for char in all_chars:
+            utf8 = char.get_utf8()
+            if not utf8:
+                continue
+
+            try:
+                stroke_order = self._cjk.getStrokeOrder(utf8.decode('utf8'))
+                if len(stroke_order) != char.get_writing().get_n_strokes():
+                    # only if stroke count matches
+                    # TODO spit out a warning
+                    continue
+                stroke_order = [s.encode('utf8') for s in stroke_order]
+                n_eval_strokes += len(stroke_order)
+            except NoInformationError:
+                n_skipped_char += 1
+                continue
+
+            for stroke in stroke_order:
+                n_samples[stroke] = n_samples.get(stroke, 0) + 1
+
+            cand = recognizer.recognize(char.get_writing(), 
+                                        n=max(self.MATCH_RESULTS))
+            cand = [[char for char, _ in stroke] for stroke in cand]
+
+            if self._verbosity_level >= 2:
+                if utf8 not in canddict: canddict[utf8] = []
+                canddict[utf8].append(cand)
+
+            for n in self.MATCH_RESULTS:
+                for idx, stroke_cand in enumerate(cand):
+                    stroke = stroke_order[idx]
+                    if stroke in stroke_cand[0:n]:
+                        n_corr_pred[n][stroke] \
+                            = n_corr_pred[n].get(stroke, 0) + 1
+                    for s in stroke_cand[0:n]:
+                        n_pred[n][s] = n_pred[n].get(s, 0) + 1
+
+        end_time = time.time()
+
+        # Calculate accuracy/recall and precision for each character
+        # Print the overall results
+        print "Overall results"
+        print "\tRecognizer: %s" % self._recognizer
+        print "\tNumber of characters evaluated: %d" \
+            % (len(all_chars) - n_skipped_char)
+        print "\tNumber of strokes evaluated: %d\n" % n_eval_strokes
+        total_time = end_time - start_time
+        print "\tTotal time: %0.2f sec" % float(total_time)
+        print "\tAverage time per character: %0.2f sec" % \
+            (float(total_time) / len(all_chars))
+        print "\tRecognition speed: %0.2f char/sec\n" % \
+            (len(all_chars) / float(total_time))
+
+        total_samples = sum(n_samples.values())
+        recall = {}
+        precision = {}
+        for n in self.MATCH_RESULTS:
+            recall[n] = {}
+            precision[n] = {}
+
+        for n in self.MATCH_RESULTS:
+            total_corr_pred = sum(n_corr_pred[n].values())
+            #total_pred = sum(n_pred[n].values())
+
+            recall_sum = 0
+            precision_sum = 0
+
+            for k in n_samples.keys():
+
+                # recall accounts for the recognizer "completeness"
+                # i.e. number of correct predictions / number of samples
+                recall[n][k] = float(n_corr_pred[n].get(k, 0)) / \
+                               float(n_samples[k])
+                recall_sum += recall[n][k]
+
+                # i.e. number of correct predictions / number of predictions
+                try:
+                    precision[n][k] = float(n_corr_pred[n].get(k, 0)) / \
+                                       float(n_pred[n][k])
+                except KeyError:
+                    precision[n][k] = 0
+
+                precision_sum += precision[n][k]
+            
+            recall_sum *= 100 / float(len(n_samples))
+            precision_sum *= 100 / float(len(n_samples))
+
+            print "\tmatch%d" % n
+            print "\t\tAccuracy/Recall: %0.2f" % recall_sum
+            if n == 1:
+                # Precision doesn't make sense for n > 1
+                print "\t\tPrecision: %0.2f" % precision_sum
+                print "\t\tF1 score: %0.2f" % harmonic_mean(recall_sum, 
+                                                            precision_sum)
+            print ""
+
+        # verbosity level 1
+        if self._verbosity_level < 1:
+            return
+
+        print "Result details"
+        for k in n_samples.keys():
+            print "\tCharacter: %s" %k
+            print "\tNumber of samples: %d\n" % n_samples[k]
+
+            for n in self.MATCH_RESULTS:
+                print "\t\tmatch%d" % n
+                print "\t\tAccuracy/Recall: %0.2f" % (recall[n][k] * 100)
+                if n == 1:
+                    # Precision doesn't make sense for n > 1
+                    print "\t\tPrecision: %0.2f" % (precision[n][k] * 100)
+                    f1s = harmonic_mean(recall[n][k], precision[n][k]) * 100
+                    print "\t\tF1 score: %0.2f" % f1s
+                print ""
+
+            if self._verbosity_level < 2:
+                continue
+            
+            # verbosity level 2
+            print "\tCandidates:"
+            i = 0
+            for cand in canddict[k]:
+                print "\tsample%d: %s" % (i, ", ".join(cand))
+                i += 1
+            print ""
+
+usage = """usage: %prog [options] recognizer model
+
+recognizer        a recognizer available on the system
+
+model             a model name available for that recognizer on the system OR
+                  the direct file path to the model
+"""
+parser = OptionParser(usage=usage, version="%prog " + VERSION)
+
+parser.add_option("-v", "--verbosity-level",
+                  type="int", dest="verbosity_level", default=0,
+                  help="verbosity level between 0 and 2")
+parser.add_option("-d", "--directory",
+                  action="append", type="string", dest="directories",
+                  default=[],
+                  help="directory containing individual XML character files")
+parser.add_option("-c", "--charcol",
+                  action="append", type="string", dest="charcols",
+                  default=[],
+                  help="character collection XML files")
+parser.add_option("-t", "--tomoe-dict",
+                  action="append", type="string", dest="tomoe",
+                  default=[],
+                  help="Tomoe XML dictionary files")
+
+
+parser.add_option("--locale",
+                  type="string", dest="locale",
+                  default='T',
+                  help="Character locale of source characters")
+
+(options, args) = parser.parse_args()
+
+try:
+    TegakiEvalStrokes(options, args).run()
+except TegakiEvalStrokesError, e:
+    sys.stderr.write(str(e) + "\n\n")
+    parser.print_help()
+    sys.exit(1)
