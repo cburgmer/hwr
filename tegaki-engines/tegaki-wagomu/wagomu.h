@@ -88,6 +88,13 @@ typedef struct {
     char pad[4];
 } CharacterGroup;
 
+typedef struct {
+    unsigned int unicode;
+    unsigned int count;
+    float akku_dist;
+    bool seen;
+} Neighbour;
+
 #ifdef __SSE__
 typedef union {
     __m128 v;
@@ -110,6 +117,9 @@ public:
     unsigned int get_window_size();
     void set_window_size(unsigned int size);
     char *get_error_message();
+
+    /* for k-nearest-neighbour evaluation */
+    static const unsigned int k_neighbours = 5;
 
 private:
     GMappedFile *file;
@@ -144,6 +154,10 @@ private:
     unsigned int window_size;
 
     unsigned int get_max_n_vectors();
+
+    unsigned int remove_duplicates(CharDist *distm, unsigned int n_chars);
+    unsigned int incremental_knn(CharDist *distm, unsigned int n_chars,
+                                 unsigned int n_results);
 
     inline float local_distance(float *v1, float *v2);
 
