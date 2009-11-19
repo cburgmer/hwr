@@ -38,6 +38,13 @@ try:
 except ImportError:
     print "Please install cjklib (http://code.google.com/p/cjklib)"
     sys.exit(1)
+#from distutils import version
+#import cjklib
+#cjklibVersion = version.LooseVersion(cjklib.__version__)
+#if cjklibVersion <= version.LooseVersion('0.2'):
+    #print ("Your version of cjklib is too old.\n"
+        #"You need a version > 0.2 (http://code.google.com/p/cjklib)")
+    #sys.exit(1)
 
 VERSION = '0.3'
 
@@ -152,13 +159,13 @@ class TegakiExtractStrokes(object):
         writing = char.get_writing()
 
         try:
-            stroke_order = self._cjk.getStrokeOrder(c)
+            stroke_order = self._cjk.getStrokeOrder(c, includePartial=True)
 
             if len(stroke_order) != writing.get_n_strokes():
                 if not self._quiet:
                     print >> sys.stderr, (
                           "Stroke count doesn't match for %s" % c
-                          + " (cjklib %d, handwriting writing %d)"
+                          + " (cjklib %d, handwriting %d)"
                           % (len(stroke_order), writing.get_n_strokes()))
                 return []
 
@@ -175,6 +182,8 @@ class TegakiExtractStrokes(object):
 
         strokeData = sourceWriting.get_strokes(True)
         for idx, stroke in enumerate(strokeOrder):
+            if stroke is None:
+                continue
             writing = Writing()
             writing.append_stroke(strokeData[idx])
             #writing.normalize()
